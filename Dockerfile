@@ -25,11 +25,11 @@ RUN gem install -N nokogiri -- --use-system-libraries && \
   rm -rf /usr/lib/lib/ruby/gems/*/cache/* && \
   rm -rf ~/.gem
 
-RUN mkdir /myapp
-WORKDIR /myapp
-COPY myapp /myapp
+RUN mkdir /app
+WORKDIR /app
+ADD Gemfile Gemfile.lock /app/
 RUN bundle install
-RUN bundle exec rake db:create
+#RUN bundle exec rake db:create
 
 
 # Add a script to be executed every time the container starts.
