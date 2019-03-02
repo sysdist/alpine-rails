@@ -29,6 +29,7 @@ RUN mkdir /app
 WORKDIR /app
 ADD Gemfile Gemfile.lock /app/
 RUN bundle install
+RUN rails app:update
 #RUN bundle exec rake db:create
 
 
