@@ -30,8 +30,15 @@ doc/
 # minimal Rails specific artifacts
 db/*.sqlite3
 /db/*.sqlite3-journal
-/log
-/tmp
+
+# Ignore all logfiles and tempfiles.
+/log/*
+/tmp/*
+!/log/.keep
+!/tmp/.keep
+
+# Ignore Byebug command history file.
+.byebug_history
 
 # add /config/database.yml if it contains passwords
 # /config/database.yml
@@ -103,3 +110,6 @@ pickle-email-*.html
 # tilde files are usually backup files from a text editor
 *~
 
+
+# Ignore master key for decrypting credentials and more.
+/config/master.key

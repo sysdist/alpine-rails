@@ -29,7 +29,7 @@ RUN mkdir /app
 WORKDIR /app
 ADD Gemfile Gemfile.lock /app/
 RUN bundle install
-RUN rails app:update
+#RUN bundle exec rails app:update:bin
 #RUN bundle exec rake db:create
 
 
@@ -40,4 +40,5 @@ ENTRYPOINT ["entrypoint.sh"]
 EXPOSE 3000
 
 # Start the main process.
-CMD ["rails", "server", "-b", "0.0.0.0"]
+#CMD ["/bin/sh"]
+CMD ["bundle", "exec", "rails", "server", "-b", "0.0.0.0"]
