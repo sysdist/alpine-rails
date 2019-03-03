@@ -30,7 +30,6 @@ WORKDIR /app
 ADD Gemfile Gemfile.lock /app/
 RUN bundle install --without development test
 
-#RUN bundle exec rails app:update:bin
 #RUN bundle exec rake db:create
 
 
@@ -42,4 +41,4 @@ EXPOSE 3000
 
 # Start the main process.
 #CMD ["/bin/sh"]
-CMD ["bundle", "exec", "rails", "server", "-b", "0.0.0.0"]
+CMD ["bundle", "exec", "rails", "server", "-b", "0.0.0.0", "-e", "production"]
