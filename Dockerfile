@@ -28,7 +28,8 @@ RUN gem install -N nokogiri -- --use-system-libraries && \
 RUN mkdir /app
 WORKDIR /app
 ADD Gemfile Gemfile.lock /app/
-RUN bundle install
+RUN bundle install --without development test
+
 #RUN bundle exec rails app:update:bin
 #RUN bundle exec rake db:create
 
