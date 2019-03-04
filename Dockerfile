@@ -27,7 +27,8 @@ RUN gem install -N nokogiri -- --use-system-libraries && \
 
 COPY rootfs /
 WORKDIR /nabito
-RUN bundle install --without development test
+RUN bundle install --without development test && \
+  bundle exec rake secret
 
 #RUN bundle exec rake db:create
 
