@@ -25,20 +25,18 @@ RUN gem install -N nokogiri -- --use-system-libraries && \
   rm -rf /usr/lib/lib/ruby/gems/*/cache/* && \
   rm -rf ~/.gem
 
-RUN mkdir /data
-WORKDIR /data
-ADD Gemfile Gemfile.lock /data/
+COPY rootfs /
+WORKDIR /nabito
 RUN bundle install --without development test
 
 #RUN bundle exec rake db:create
 
 
 # Add a script to be executed every time the container starts.
-COPY entrypoint.sh /usr/bin/
-RUN chmod +x /usr/bin/entrypoint.sh
-ENTRYPOINT ["entrypoint.sh"]
-EXPOSE 3000
+COPY run.sh /usr/bin/
+RUN chmod +x /usr/bin/run.sh
+ENTRYPOINT ["run.sh"]
 
 # Start the main process.
 #CMD ["/bin/sh"]
-CMD ["bundle", "exec", "rails", "server", "-b", "0.0.0.0", "-e", "production"]
+

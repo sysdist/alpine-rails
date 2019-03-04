@@ -12,4 +12,6 @@ rm -f /data/tmp/pids/server.pid
 bundle exec rails app:update:bin
 
 # Then exec the container's main process (what's set as CMD in the Dockerfile).
-exec "$@"
+#exec "$@"
+
+bundle exec rails server -b 0.0.0.0 -e production
