@@ -1,6 +1,6 @@
 {
   "name": "Rails app",
-  "version": "0.2",
+  "version": "0.3",
   "slug": "rails_app",
   "description": "My first real add-on in Rails!",
   "startup": "application",
