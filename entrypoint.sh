@@ -2,7 +2,7 @@
 set -e
 
 # Remove a potentially pre-existing server.pid for Rails.
-rm -f /app/tmp/pids/server.pid
+rm -f /data/tmp/pids/server.pid
 
  #if [ ! -f bin/rails ]; then
  #    bundle install --without development test --binstubs

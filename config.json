@@ -1,0 +1,35 @@
+{
+  "name": "Rails app",
+  "version": "0.1",
+  "slug": "rails_app",
+  "description": "My first real add-on in Rails!",
+  "startup": "application",
+  "boot": "auto",
+  "homeassistant_api": true,
+  "options": {
+    "message": "custom things",
+    "logins": [
+      { "username": "beer", "password": "123456" },
+      { "username": "cheep", "password": "654321" }
+    ],
+    "link": "http://example.com/",
+    "size": 15,
+    "count": 1.2,
+    "target": "beer"
+  },
+  "schema": {
+    "message": "str",
+    "logins": [
+      { "username": "str", "password": "str" }
+    ],
+    "link": "url",
+    "size": "int(5,20)",
+    "count": "float",
+    "target": "str",
+    "not_need": "str?"
+  },
+  "ports": {
+    "3000/tcp": 3000
+  }
+  
+}

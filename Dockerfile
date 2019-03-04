@@ -25,9 +25,9 @@ RUN gem install -N nokogiri -- --use-system-libraries && \
   rm -rf /usr/lib/lib/ruby/gems/*/cache/* && \
   rm -rf ~/.gem
 
-RUN mkdir /app
-WORKDIR /app
-ADD Gemfile Gemfile.lock /app/
+RUN mkdir /data
+WORKDIR /data
+ADD Gemfile Gemfile.lock /data/
 RUN bundle install --without development test
 
 #RUN bundle exec rake db:create
