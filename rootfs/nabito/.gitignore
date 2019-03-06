@@ -10,6 +10,8 @@
 # http://github.com/RailsApps/rails-composer/issues
 #----------------------------------------------------------------------------
 
+config/master.key
+
 #Capistrano specifics
 /config/deploy
 /config/deploy.rb
