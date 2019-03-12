@@ -13,6 +13,8 @@
 
 config/master.key
 
+
+
 #Capistrano specifics
 /config/deploy
 /config/deploy.rb

@@ -1,8 +1,8 @@
 class MqttClient
 
     def initialize
-        uri=URI.parse("mqtt://mqttuser:changeme@localhost:1883")
-        #  uri = URI.parse(ENV['NABITO_MQTT_URL'])
+        #uri=URI.parse("mqtt://mqttuser:changeme@localhost:1883")
+        uri = URI.parse(ENV['MQTT_URL'])
         @client = MQTT::Client.connect(host: uri.hostname,
                                       port: uri.port, 
                                       username: uri.user,

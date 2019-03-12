@@ -1,6 +1,6 @@
 ######################
-# Stage: Builder
-FROM ruby:alpine3.9 as Builder
+# Stage: builder
+FROM ruby:alpine3.9 as builder
 
 #ARG FOLDERS_TO_REMOVE
 #ARG BUNDLE_WITHOUT
@@ -34,7 +34,6 @@ RUN gem install -N bundler \
  && find /usr/local/bundle/gems/ -name "*.c" -delete \
  && find /usr/local/bundle/gems/ -name "*.o" -delete
 
-
 # Add the Rails app
 COPY rootfs /
 
@@ -48,44 +47,44 @@ RUN rm -rf spec node_modules app/assets vendor/assets lib/assets tmp/cache
 
 ###############################
 # Stage Final
-FROM ruby:alpine3.9
-LABEL maintainer="mail@georg-ledermann.de"
+#FROM builder as final
+#LABEL maintainer="mail@georg-ledermann.de"
 
 #ARG ADDITIONAL_PACKAGES
 #ARG EXECJS_RUNTIME
 
 # Add Alpine packages
-RUN apk add --update --no-cache \
-    postgresql-client sqlite-dev \
-    imagemagick \
-    nodejs-current build-base git \
-    tzdata \
-    file
+# RUN apk add --update --no-cache \
+#     postgresql-client sqlite-dev \
+#     imagemagick \
+#     nodejs-current build-base git jq \
+#     tzdata \
+#     file
 
 COPY run.sh /usr/bin/
 RUN chmod +x /usr/bin/run.sh
 
-# Add user
-RUN addgroup -g 1000 -S app \
- && adduser -u 1000 -S app -G app
-USER app
+# # Add user
+# RUN addgroup -g 1000 -S app \
+#  && adduser -u 1000 -S app -G app
+# USER app
 
-# Copy app with gems from former build stage
-COPY --from=Builder /usr/local/bundle/ /usr/local/bundle/
-COPY --from=Builder --chown=app:app /app /app
+# # Copy app with gems from former build stage
+# COPY --from=builder /usr/local/bundle/ /usr/local/bundle/
+# COPY --from=builder --chown=app:app /app /app
 
 # Set Rails env
 ENV RAILS_LOG_TO_STDOUT true
 ENV RAILS_SERVE_STATIC_FILES true
 ENV EXECJS_RUNTIME "Node"
 
-WORKDIR /app
+# WORKDIR /app
 
 # Expose Puma port
 EXPOSE 3000
 
 # Save timestamp of image building
-RUN date -u > BUILD_TIME
+#RUN date -u > BUILD_TIME
 
 # Start up
 #CMD ["docker/startup.sh"]
