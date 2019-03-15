@@ -13,11 +13,16 @@ class MqttClient
         @client.publish(topic, message)
         #self.disconnect()
     end
+
+    def get_message(topic)
+        topic,message = @client.get(topic)
+        return message
+    end
   
-    def receive_messages
-        @client.subscribe('#')
-        @client.get do |topic,message|
-            puts "topic: #{topic}, msg: #{message}"
+    def receive_messages(topic)
+        @client.subscribe(topic)
+        @client.get do |t,message|
+            puts "topic: #{t}, msg: #{message}"
             
             # t = topic.split('/')
             # case t[4]

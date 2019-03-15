@@ -20,8 +20,6 @@ html
         == yield
         == render 'layouts/footer'
       -else
-        -if user_signed_in?
-          == render 'users/menu'
         .side-body
           .container
             == render 'layouts/messages'

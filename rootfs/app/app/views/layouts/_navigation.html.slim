@@ -25,21 +25,15 @@
 
 /      ul.nav.navbar-nav
 nav.navbar.navbar-expand-lg.navbar-light.bg-light
-  = link_to "NABITO - the metering network", root_path, class: "navbar-brand"
+  = link_to "NABITO - mini-metering app", root_path, class: "navbar-brand"
   / a.navbar-brand[href="#"]
   /   | Nabito - the metering network
   button.navbar-toggler[type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"]
     span.navbar-toggler-icon
   #navbarSupportedContent.collapse.navbar-collapse
     ul.navbar-nav.mr-auto
-      li.nav-item
-        a.nav-link[href="#"]
-          | Smart meters 
-          span.sr-only
-            | (current)
-      li.nav-item
-        a.nav-link[href="#"]
-          | Transactions
+      li.nav-item = link_to t('.connectors'), connectors_path, class: "nav-link"
+      li.nav-item = link_to t('.transactions'), transactions_path, class: "nav-link"      
       / li.nav-item
       /   a.nav-link.disabled[href="#"]
       /     | Disabled
@@ -56,3 +50,4 @@ nav.navbar.navbar-expand-lg.navbar-light.bg-light
     /   input.form-control.mr-sm-2[type="search" placeholder="Search" aria-label="Search"]
     /   button.btn.btn-outline-success.my-2.my-sm-0[type="submit"]
     /     | Search
+    
