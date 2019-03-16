@@ -20,9 +20,10 @@ export MQTT_URL="$(jq --raw-output '.mqtt_url' $CONFIG_PATH)"
 echo "SECRET_KEY_BASE is $SECRET_KEY_BASE"
 
 export RAILS_ENV=production
+export DISABLE_DATABASE_ENVIRONMENT_CHECK=1 
 
-bundle exec rake db:create
-bundle exec rake db:migrate
+bundle exec rails db:setup
+#bundle exec rake db:migrate
 
 
 # Then exec the container's main process (what's set as CMD in the Dockerfile).
