@@ -1,7 +1,9 @@
 ######################
 # Stage: builder
-FROM ruby:alpine3.9 as builder
+FROM sysdist/ruby2.6.1-alpine3.9
 
+
+#FROM ruby:alpine3.9 as builder
 #ARG FOLDERS_TO_REMOVE
 #ARG BUNDLE_WITHOUT
 #ARG RAILS_ENV
