@@ -18,12 +18,17 @@ export SECRET_KEY_BASE="$(jq --raw-output '.secret_key_base' $CONFIG_PATH)"
 export MQTT_URL="$(jq --raw-output '.mqtt_url' $CONFIG_PATH)"
 #export SECRET_KEY_BASE=fff
 echo "SECRET_KEY_BASE is $SECRET_KEY_BASE"
-
 export RAILS_ENV=production
-export DISABLE_DATABASE_ENVIRONMENT_CHECK=1 
 
-bundle exec rails db:setup
-#bundle exec rake db:migrate
+if [ ! -f /data/production.sqlite3 ]; then
+  export DISABLE_DATABASE_ENVIRONMENT_CHECK=1 
+  bundle exec rails db:setup
+else
+  bundle exec rake db:migrate
+fi
+
+
+
 
 
 # Then exec the container's main process (what's set as CMD in the Dockerfile).
