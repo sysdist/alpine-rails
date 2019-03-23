@@ -1,6 +1,6 @@
 ######################
 # Stage: builder
-FROM sysdist/ruby2.6.1-alpine3.9
+FROM ruby:2.6.1-alpine
 
 
 #FROM ruby:alpine3.9 as builder

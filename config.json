@@ -1,11 +1,13 @@
 {
   "name": "Rails app",
-  "version": "0.5",
+  "version": "0.7",
   "slug": "rails_app",
   "description": "My first real add-on in Rails!",
   "startup": "application",
   "boot": "auto",
   "homeassistant_api": true,
+  "arch": ["amd64", "armv7"],  
+  "image": "sysdist/{arch}-addon-nabito",
   "options": {
     "message": "custom things",
     "mqtt_url": "mqtt://mqttuser:changeme@192.168.1.6:1883",
